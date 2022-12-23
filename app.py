@@ -10,9 +10,9 @@ import wget
 import time
 
 model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/best.pt', force_reload=True) 
-image1 = Image.open('data/outputs/test1.jpg')
-image2 = Image.open('data/outputs/test2.jpg')
-image3 = Image.open('data/outputs/test3.jpg')
+image1 = Image.open('data/outputs/9176c1ac52b3b1320d952658f64d0b8e0596813dd52891c48bdc42ba.jpg')
+image2 = Image.open('data/outputs/939235af88c92caa8da1beefd2517624d1439dda1bad9013b9d10cbf.jpg')
+
 def imageInput(device, src):
     
     if src == 'อัปโหลดรูปภาพ':
@@ -107,13 +107,12 @@ def main():
         # elif(valuesimg == 2):
         #     st.image(image3, caption='picture 3')
         #     st.write("ผลลัพท์การตรวจสอบ")
-        valuesimg = st.selectbox('Example',('Case 1', 'Case 2', 'Case 3'))
+        valuesimg = st.selectbox('Example',('Case 1', 'Case 2'))
         if (valuesimg == "Case 1"):
             st.image(image1, caption='picture 1')
         elif (valuesimg == "Case 2"):
             st.image(image2, caption='picture 2')
-        elif (valuesimg == "Case 3"):
-            st.image(image3, caption='picture 3')
+       
 
 
     elif option == "Video": 
