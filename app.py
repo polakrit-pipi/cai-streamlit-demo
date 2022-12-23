@@ -64,12 +64,14 @@ def videoInput(device, src):
         video_bytes = st_video.read()
         st.video(video_bytes)
         st.write("วีดีโอที่ถูกนำเข้ามา")
-        detect(weights="models/best.pt", source=imgpath, device=0,project=outputpath) if device == 'cuda' else detect(weights="models/best.pt", source=imgpath, device='cpu')
+        detect(weights="models/best.pt", source=imgpath, device=0,project=outputpath) if device == 'cuda' else detect(weights="models/best.pt", source=imgpath, device='cpu',project=outputpath)
         st_video2 = open(outputpath+"/exp/"+ str(pp)+uploaded_video.name, 'rb')
         video_bytes2 = st_video2.read()
+        st.video(video_bytes2)
+        st.write("ผลลัพท์การตรวจสอบ")
         # st.video(video_bytes2)
         st.download_button(label="Download video file", data=video_bytes2,file_name='video_clip.mp4')
-        st.write("ผลลัพท์การตรวจสอบ")
+       
         
 
 
@@ -91,6 +93,9 @@ def main():
     
     if option == "Image":    
         imageInput(deviceoption, datasrc)
+
+
+        
         # valuesimg = st.slider('Show test Image', 0, 3, 0)
 
         # if(valuesimg == 0):
@@ -105,21 +110,15 @@ def main():
         valuesimg = st.selectbox('Example',('Case 1', 'Case 2', 'Case 3'))
         if (valuesimg == "Case 1"):
             st.image(image1, caption='picture 1')
-            st.write("ผลลัพท์การตรวจสอบ")
         elif (valuesimg == "Case 2"):
             st.image(image2, caption='picture 2')
-            st.write("ผลลัพท์การตรวจสอบ")
         elif (valuesimg == "Case 3"):
             st.image(image3, caption='picture 3')
-            st.write("ผลลัพท์การตรวจสอบ")
 
 
     elif option == "Video": 
-        
-        
-
-
         videoInput(deviceoption, datasrc)
+
         # values = st.slider('Show test Video', 0, 3, 0)
 
         # if(values == 0):
@@ -152,19 +151,19 @@ def main():
             st.video(st_video_test1)
      
             #st.video(video_bytes2)
-            st.write("ผลลัพท์การตรวจสอบ")
+
         elif (values == "Case 2"):
             st_video_test2 = open("data/outputs/test1.mp4", 'rb')
             st.video(st_video_test2)
        
             #st.video(video_bytes2)
-            st.write("ผลลัพท์การตรวจสอบ")
+          
         elif (values == "Case 3"):
             st_video_test3 = open("data/outputs/test4.mp4", 'rb')
             st.video(st_video_test3)
    
             #st.video(video_bytes2)
-            st.write("ผลลัพท์การตรวจสอบ")
+          
 
 
     
